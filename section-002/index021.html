@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <!-- Introduction to directive -->
+    <div id="app">
+        <h1 v-once>{{ title }}</h1>
+        <p>{{ sayHello() }} - <a v-bind:href="link">Google</a></p>
+        <!-- Render raw html -->
+        <p v-html="finishedLink"></p>
+    </div>
+    <script src="https://unpkg.com/vue@2.4.2/dist/vue.js"></script>
+    <script src="js/index021.js"></script>
+
+</body>
+
+</html>
