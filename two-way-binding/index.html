@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Vue Two Way Binding</title>
+</head>
+
+<body>
+<div id="app">
+    <input type="text" v-model="name">
+    <hr>
+    <button v-on:click="counter++">Increase</button>
+    <button v-on:click="counter--">Decrease</button>
+    <button v-on:click="secondCounter++">Increase Second</button>
+    <p>{{ counter }}</p>
+    <p>{{ secondCounter }}</p>
+    <p>Result: {{ result() }} | {{ output }}</p>
+    <p>{{ name }}</p>
+
+</div>
+
+<hr>
+
+<div id="example">
+    <p>Original message: "{{ message }}"</p>
+    <p>Computed reversed message: "{{ reversedMessage }}"</p>
+</div>
+
+<script src="https://unpkg.com/vue@2.4.2/dist/vue.js"></script>
+<script src="index.js"></script>
+
+</body>
+</html>
