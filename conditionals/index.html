@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Vue JS - Conditionals</title>
+</head>
+
+<body>
+
+<div id="app">
+    <!--Removed when the element is clicked-->
+    <p v-if="show">You can see me</p>
+    <p v-else>Now see me</p>
+    <p>Do you also see me?</p>
+    <!--Toggle between true and false-->
+    <button @click="show = !show">Switch</button>
+
+</div>
+
+<hr>
+
+<div id="iterator">
+    <!--<ul>-->
+    <!--     &lt;!&ndash;for loop&ndash;&gt;
+         <li v-for="ingredient in ingredients">
+             {{ ingredient }}
+         </li>
+         <hr>
+         &lt;!&ndash;for loop with index tracking&ndash;&gt;
+         <li v-for="(ingredient,i) in ingredients">
+             {{ ingredient}} {{ i }}
+         </li>
+     </ul>
+     <hr>
+     &lt;!&ndash;Looping with a template&ndash;&gt;
+     <template v-for="(ingredient, index) in ingredients">
+         <h1>{{ ingredient }}</h1>
+         <p> {{ index }}</p>
+     </template>-->
+
+    <!--Looping with objects-->
+    <ul>
+        <li v-for="person in persons">
+            <p>{{ person.name }}</p>
+            <p>{{ person.age }}</p>
+            <p>{{ person.color }}</p>
+
+            <span v-for="(value, key) in person">
+                {{ key }}: {{ value }}
+            </span>
+            <hr>
+        </li>
+    </ul>
+</div>
+
+<script src="https://unpkg.com/vue@2.4.2/dist/vue.js"></script>
+<script src="js/index.js"></script>
+
+</body>
+
+</html>
