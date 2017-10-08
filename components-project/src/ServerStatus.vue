@@ -3,6 +3,7 @@
         <h1>ServerStatus.vue</h1>
         <p>Server status: {{ status }}</p>
         <button @click="changeStatus">Change Status</button>
+        <test-component>></test-component>
     </div>
 </template>
 
