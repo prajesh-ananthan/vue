@@ -3,15 +3,17 @@
         <div class="row">
             <div class="col-xs-12">
                 <button @click="selectedComponent = 'appQuote'">Quote</button>
-                <button @click="selectedComponent = 'appNew'">New</button>
                 <button @click="selectedComponent = 'appAuthor'">Author</button>
-                {{ selectedComponent }}
-                <component :is="selectedComponent">
-                    <p>Default content</p>
-                </component>
+                <button @click="selectedComponent = 'appNew'">New</button>
+                <hr>
+                <keep-alive>
+                    <component :is="selectedComponent">
+                        <p>Default content</p>
+                    </component>
+                </keep-alive>
                 <!--<appQuote>-->
-                    <!--<h2 slot="title">{{ quoteTitle }}</h2>-->
-                    <!--<p slot="content">Wonderful Quote</p>-->
+                <!--<h2 slot="title">{{ quoteTitle }}</h2>-->
+                <!--<p slot="content">Wonderful Quote</p>-->
                 <!--</appQuote>-->
             </div>
         </div>
