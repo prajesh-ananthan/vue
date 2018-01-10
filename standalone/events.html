@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js Events</title>
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="clickedButton">Click Here</button>
+        <input type="text" v-on:keyup.enter="pressedEnter">
+        <input type="text" v-on:keyup.shift.enter="myListener">
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                clickedButton : function(event) {
+                    console.log(event);
+                    alert("You have clicked the button");
+                },
+                pressedEnter : function() {
+                    alert("Enter button has been pressed!");
+                },
+                myListener : function() {
+                    alert("Shift enter pressed");
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>

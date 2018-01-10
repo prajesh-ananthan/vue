@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js Standalone App</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <h1>{{ message }}</h1> -->
+
+        <!-- EXERCISE 1: Store the title of a movie (e.g. "The Matrix") and when it was released in data properties and output them using string interpolation -->
+        <!-- <p>Title: {{ movieTitle }}</p>
+        <p>Released: {{ releaseYear }}</p> -->
+
+        <!-- EXERCISE 2: Output whether or not the movie is old or new by using a method. The movie is old if it was released prior to year 2000. -->
+        <!-- <p>The movie is {{ isMovieOld() }}.</p> -->
+
+        <!-- EXERCISE 3: Bind the movie name to the "title" attribute on the following div element -->
+        <!-- <div v-bind:title="movieTitle">Hover your mouse here!</div> -->
+
+        <div v-bind:title="getFullName()">Hover to see my name</div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello World',
+                movieTitle: 'The Matrix',
+                releaseYear: 1999,
+                firstName: 'Prajesh',
+                lastName: 'Ananthan'
+            },
+            methods: {
+                isMovieOld : function() {
+                    return this.releaseYear < 2000 ? 'old' : 'new';
+                },
+                getFullName : function() {
+                    return this.firstName + " " + this.lastName;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
