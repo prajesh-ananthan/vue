@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js Events</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- EXERCISE 1: Add a computed property which returns an array of strings 
+                with the movie name followed by the release year in parenthesis. 
+                Then output these strings as an ordered list. -->
+        <ol>
+            <li v-for="movie in formattedMovies">
+                {{ movie }}
+            </li>
+        </ol>
+
+        <!-- EXERCISE 2: Make the button below add a movie of your choice to the 
+                "movies" data property. Then add a watcher which outputs the movie that 
+                was just added in an alert dialog. -->
+        <button>Add Movie</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                movies: [
+                    { name: 'The Matrix', year: 1999 },
+                    { name: 'The Matrix Reloaded', year: 2003 },
+                    { name: 'The Matrix Revolutions', year: 2003 }
+                ]
+            },
+            computed: {
+                // Add formatted movies
+                // https://www.udemy.com/vuejs-from-beginner-to-professional/learn/v4/t/lecture/6268398?start=0
+                formattedMovies: function () {
+                    this.movies.map(function (movie) {
+                        return movie.name + ' (' + movie.year + ')';
+                    })
+                }
+
+            }
+        });
+    </script>
+</body>
+
+</html>
