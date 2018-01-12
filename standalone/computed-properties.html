@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js Computed Properties</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ counter }}</p>
+        <!-- <p>{{ getFullName() }}</p> -->
+        <!-- <p>{{ getFullName() }}</p> -->
+        <p>{{ fullName }}</p>
+        <p>{{ fullName }}</p>
+
+        <button v-on:click="counter++">Increase Counter</button>
+        <button v-on:click="changeName">Change Name</button>
+        <button v-on:click="changeNameSetter">Change Name Setter</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                counter: 1,
+                firstName: 'Prajesh',
+                lastName: 'Ananthan'
+            },
+            methods: {
+                // Method will be called everytime the template is loaded. 
+                // Compare by calling this method with the computed property method
+                getFullName: function () {
+                    alert("Assembling full name...");
+                    return this.firstName + " " + this.lastName;
+                },
+                changeName: function () {
+                    this.firstName = "Usha",
+                    this.lastName = "Ananthan"
+                },
+                changeNameSetter: function() {
+                    this.fullName = 'Doctor Strange';
+                }
+            },
+            computed: {
+                // fullName: function () {
+                //     alert("Assembling full name...");
+                //     return this.firstName + " " + this.lastName;
+                // }
+
+                fullName: {
+                    get: function() {
+                        return this.firstName + " " + this.lastName;
+                    },
+                    set: function(newValue) {
+                        alert("Setting a new name: " + newValue);
+                        let parts = newValue.split(' ');
+                        this.firstName = parts[0];
+                        this.lastName = parts[parts.length - 1];
+
+
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
