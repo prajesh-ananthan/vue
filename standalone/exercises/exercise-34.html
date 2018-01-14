@@ -22,7 +22,7 @@
         <!-- EXERCISE 2: Make the button below add a movie of your choice to the 
                 "movies" data property. Then add a watcher which outputs the movie that 
                 was just added in an alert dialog. -->
-        <button>Add Movie</button>
+        <button v-on:click="addNewMovie()">Add Movie</button>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
@@ -36,15 +36,31 @@
                     { name: 'The Matrix Revolutions', year: 2003 }
                 ]
             },
+            methods: {
+                addNewMovie: function() {
+                    this.movies.push({
+                        name: 'The Fast and The Furious',
+                        year: '2001'
+                    })
+                }
+            },
             computed: {
                 // Add formatted movies
                 // https://www.udemy.com/vuejs-from-beginner-to-professional/learn/v4/t/lecture/6268398?start=0
                 formattedMovies: function () {
-                    this.movies.map(function (movie) {
+                    return this.movies.map(function(movie) {
                         return movie.name + ' (' + movie.year + ')';
                     })
                 }
 
+            },
+            watch: {
+                movies: function(movies) {
+                    // The name of the watcher should match with the name of the data property
+                    var newMovie = movies[movies.length - 1];
+                    alert(newMovie.name + ' has been adeed of year ' + newMovie.year);
+
+                }
             }
         });
     </script>

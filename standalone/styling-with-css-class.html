@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Vue.js Styling with CSS Class</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- We are able to add expression inside the v-bind directive's class attribute array -->
+        <div class="shape" v-for="shape in shapes" v-bind:class="[ shape.shape, shape.direction ? shape.direction : '', 
+                                                                    { animate: shape.animate }]">
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                shapes: [
+                    { 'shape': 'circle' },
+                    { 'shape': 'square' },
+                    { 'shape': 'triangle', 'direction': 'up', 'animate': 'true' },
+                    { 'shape': 'triangle', 'direction': 'down' },
+                    { 'shape': 'triangle', 'direction': 'right', 'animate': 'true' },
+                    { 'shape': 'triangle', 'direction': 'left' },
+
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

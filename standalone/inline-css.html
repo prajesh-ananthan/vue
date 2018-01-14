@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js Inline CSS</title>
+</head>
+
+<body>
+    <div id="app">
+        <div v-bind:style="[styles, moreStyles]"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                moreStyles: {
+                    'border-radius': '5px',
+                }
+            },
+            computed: {
+                styles: function () {
+                    var height = 200;
+
+                    return {
+                        'background-color': 'blue',
+                        'width': (height / 2) + 'px',
+                        'height': height + 'px'
+                    }
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

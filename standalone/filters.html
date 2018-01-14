@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js Filters</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- A Vue.js filter is essentially a function that takes a value, processes it, 
+            and then returns the processed value. In the markup it is denoted by a single pipe (|) and 
+            can be followed by one or more arguments -->
+        <p>{{ message | uppercase(true) }}</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello World'
+
+            },
+            methods: {
+
+            },
+            filters: {
+                uppercase: function (value, onlyFirstChracter) {
+                    if (!value) {
+                        return '';
+                    }
+
+                    value = value.toString();
+
+                    if (onlyFirstChracter) {
+                        return value.charAt(0).toUpperCase() + value.slice(1);
+                    }
+
+                    return value.toUpperCase();
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

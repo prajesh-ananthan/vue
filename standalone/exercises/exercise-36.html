@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js Filters</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- EXERCISE 1: Implement a "uwfirst" filter which transforms the first 
+                    character of each word to uppercase. Use this filter to transform the 
+                    paragraph's title with the v-bind directive.
+                    HINT: Use JavaScript's "split" function to split the message into words. -->
+        <p v-bind:title="message">{{ message | uwfirst}}</p>
+
+        <!-- EXERCISE 2: Apply the filter from the first exercise to the below 
+                    paragraph. Then implement a filter which removes any spaces and chain these 
+                    two filters together. -->
+        <p>{{ message | uwfirst | removeSpace }}</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'hello world'
+
+            },
+            methods: {
+
+            },
+            filters: {
+                uwfirst: function (value) {
+                    if (!value) {
+                        return '';
+                    }
+
+                    parts = value.toString().split(' ');
+
+                    // Returns an array of words with first letter as uppercase                    
+                    var upperCaseWords = parts.map(function (word) {
+                        return word.charAt(0).toUpperCase() + word.slice(1);
+                    })
+
+
+                    return upperCaseWords.join(' ');
+                },
+                removeSpace : function(value) {
+                    if (!value) {
+                        return '';
+                    }
+
+                    // Removes whitespace from the string
+                    return value.toString().replace(/ /g, '');
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
