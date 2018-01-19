@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js Computed Properties</title>
+</head>
+
+<body>
+    <div id="app1">
+        <contact-us></contact-us>
+        <contact-us></contact-us>
+    </div>
+
+    <!-- This does not render as contactUs component is registered locally under #app1 Vue instance -->
+    <div id="app2">
+        <contact-us></contact-us>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+    <script type="text/javascript">
+
+        var contactUs = {
+            data: function () {
+                return {
+                    email: 'info@company.com'
+                };
+            },
+            template: `
+                <div>
+                    <h1>Contact Us</h1>
+                    <p>Please send an email to: {{ email}} </p>
+                </div>
+            `
+        };
+
+        new Vue({
+            el: '#app1',
+            components: {
+                'contact-us': contactUs
+            }
+        });
+
+        new Vue({
+            el: '#app2'
+        });
+
+    </script>
+</body>
+
+</html>

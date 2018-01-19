@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js Computed Properties</title>
+</head>
+
+<body>
+    <div id="app">
+        <contact-us></contact-us>
+        <contact-us></contact-us>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+    <script type="text/javascript">
+
+        // Register the component
+        Vue.component('contact-us', {
+            data: function () {
+                return {
+                    email: 'info@company.com'
+                };
+            },
+            template: `
+                <div>
+                    <h1>Contact Us</h1>
+                    <p>Please send an email to: {{ email}} </p>
+                </div>
+            `
+        });
+
+        // Create a root Vue instance
+        new Vue({
+            el: '#app'
+        });
+
+    </script>
+</body>
+
+</html>

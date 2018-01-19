@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Instance</title>
+</head>
+
+<body>
+    <div id="vm1">
+        {{ name }}
+    </div>
+
+    <div id="vm2">
+        <button @click="showName" Show Name></button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+    <script type="text/javascript">
+        var vm1 = new Vue({
+            el: '#vm1',
+            data: {
+                name: 'Vue instance 1'
+            }
+        });
+        setTimeout(function () {
+            vm1.name = 'Hello from the other side!'
+        }, 2000);
+
+
+        var vm2 = new Vue({
+            el: '#vm2',
+            methods: {
+                showName: function () {
+                    alert("The name of the Vue instance is: ");
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
