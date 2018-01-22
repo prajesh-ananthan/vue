@@ -6,9 +6,10 @@
       <p class="lead">{{ content }}</p>
       <appAuthor></appAuthor>
 
-      <!-- Note the binding of the properties with ':' -->
+      <!-- Bind properties from child component to the parent component with ':' symbol -->
       <div class="row">
-            <appAuthor2 :firstName="author.firstName" :lastName="author.lastName"></appAuthor2>
+            <!-- <appAuthor2 :firstName="author.firstName" :lastName="author.lastName"></appAuthor2> -->
+            <appAuthor2 :author="author"></appAuthor2>
       </div>
       
   </div>
@@ -30,7 +31,7 @@ To add a component in another component:
 3) Call the component at the template
 */
 
-import moment from "moment";
+import moment from "moment";c
 import Author from "./Author.vue";
 
 // Importing firstName and lastName by properties
