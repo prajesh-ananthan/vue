@@ -1,0 +1,62 @@
+<template>
+  <div class="article">
+      <h1>{{ title }}</h1>
+      
+      <p>Published on {{ published | moment }}</p>
+      <p class="lead">{{ content }}</p>
+      <appAuthor></appAuthor>
+
+      <!-- Note the binding of the properties with ':' -->
+      <div class="row">
+            <appAuthor2 :firstName="author.firstName" :lastName="author.lastName"></appAuthor2>
+      </div>
+      
+  </div>
+</template>
+
+<script>
+
+/*
+To add a new component at App.vue file:
+=======================================
+1) Create component
+2) Register the component at main.js
+3) Call the component at App.vue
+
+To add a component in another component:
+========================================
+1) Create component
+2) Import the component in the current component
+3) Call the component at the template
+*/
+
+import moment from "moment";
+import Author from "./Author.vue";
+
+// Importing firstName and lastName by properties
+import AuthorTwo from "./AuthorTwo.vue";
+
+export default {
+  data() {
+    return {
+      title: "10 Reasons Why I love Vue.js",
+      published: new Date(),
+      content:
+        "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
+      author: {
+        firstName: "Prajesh",
+        lastName: "Ananthan"
+      }
+    };
+  },
+  filters: {
+    moment: function(value) {
+      return moment(value).format("MMMM Do");
+    }
+  },
+  components: {
+    appAuthor: Author,
+    appAuthor2: AuthorTwo
+  }
+};
+</script>

@@ -3,11 +3,11 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                announcement: 'The site will go down for maintenance soon!'
-            };
-        }
-    }
+export default {
+  data() {
+    return {
+      announcement: "The site will go down for maintenance soon!"
+    };
+  }
+};
 </script>

@@ -3,6 +3,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <announcement></announcement>
+                <appArticle></appArticle>
             </div>
         </div>
     </div>
