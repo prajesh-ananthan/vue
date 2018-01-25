@@ -31,7 +31,7 @@ To add a component in another component:
 3) Call the component at the template
 */
 
-import moment from "moment";c
+import moment from "moment";
 import Author from "./Author.vue";
 
 // Importing firstName and lastName by properties
