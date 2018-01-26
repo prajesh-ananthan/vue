@@ -3,20 +3,23 @@
       <h1>{{ title }}</h1>
       
       <p>Published on {{ published | moment }}</p>
+      <p>Shares: {{ shares }}</p>
       <p class="lead">{{ content }}</p>
+      
+      <app-social-sharing @articleWasShared="shared"></app-social-sharing>
+      <br><br>
       <appAuthor></appAuthor>
-
+      <br>
       <!-- Bind properties from child component to the parent component with ':' symbol -->
-      <div class="row">
-            <!-- <appAuthor2 :firstName="author.firstName" :lastName="author.lastName"></appAuthor2> -->
-            <appAuthor2 :author="author"></appAuthor2>
-      </div>
+      <!-- <appAuthor2 :firstName="author.firstName" :lastName="author.lastName"></appAuthor2> -->
+      <appAuthor2 :author="author"></appAuthor2>
+
+  
       
   </div>
 </template>
 
 <script>
-
 /*
 To add a new component at App.vue file:
 =======================================
@@ -31,8 +34,9 @@ To add a component in another component:
 3) Call the component at the template
 */
 
-import moment from "moment";c
+import moment from "moment";
 import Author from "./Author.vue";
+import Social from "./Social.vue";
 
 // Importing firstName and lastName by properties
 import AuthorTwo from "./AuthorTwo.vue";
@@ -47,8 +51,15 @@ export default {
       author: {
         firstName: "Prajesh",
         lastName: "Ananthan"
-      }
+      },
+      shares: 0
     };
+  },
+  methods: {
+    shared: function(event) {
+      this.shares++;
+      console.log(event);
+    }
   },
   filters: {
     moment: function(value) {
@@ -57,7 +68,8 @@ export default {
   },
   components: {
     appAuthor: Author,
-    appAuthor2: AuthorTwo
+    appAuthor2: AuthorTwo,
+    appSocialSharing: Social
   }
 };
 </script>
