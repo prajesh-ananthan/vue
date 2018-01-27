@@ -6,6 +6,10 @@
     </div>
 </template>
 <script>
+// Import event bus from main.js
+// The declaration of the eventbus is done there
+import { eventBus } from "./main";
+
 export default {
   props: {
     article: {
@@ -14,10 +18,16 @@ export default {
     }
   },
   methods: {
-    share() {
-      this.$emit("articleWasShared", {
-        media: 'Facebook'
+    share(media) {
+    console.log(this.article);
+      eventBus.$emit("articleWasShared", {
+        article: this.article,
+        media: media
       });
+
+    //   this.$emit("articleWasShared", {
+    //     media: media
+    //   });
     }
   }
 };

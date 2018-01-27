@@ -6,6 +6,9 @@ import Article from './Article.vue';
 Vue.component('announcement', Announcement);
 Vue.component('appArticle', Article);
 
+// Declare an event bus for all components
+export const eventBus = new Vue();
+
 new Vue({
   el: '#app',
   render: h => h(App)
