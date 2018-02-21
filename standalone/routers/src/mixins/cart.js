@@ -22,8 +22,7 @@ export default {
               if (this.cart.items[i].product.id === product.id) {
                   return this.cart.items[i];
               }
-          }
-          
+          }          
           return null;
       },
       

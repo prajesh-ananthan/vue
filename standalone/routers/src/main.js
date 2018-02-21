@@ -5,7 +5,7 @@ import App from "./App.vue";
 import VueRouter from "vue-router";
 import { routes } from "./routes";
 
-Vue.filter("currency", function (value) {
+Vue.filter("currency", function(value) {
   let formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -22,7 +22,7 @@ Vue.use(VueRouter);
 // Catch all other routes and render the 404 page
 const router = new VueRouter({
   routes: routes,
-  mode: 'history'
+  mode: "history"
 });
 
 export const eventBus = new Vue();

@@ -32,7 +32,7 @@
 
             <tr>
                 <td class="text-right" colspan="2">
-                    <strong>Taxes</strong>
+                    <strong>Taxes</strong> 
                 </td>
 
                 <td>{{ taxAmount | currency }}</td>
