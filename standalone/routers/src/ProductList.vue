@@ -4,7 +4,8 @@
             <div class="thumbnail">
                 <img class="group list-group-image" src="http://placehold.it/400x250/000/fff">
                 <div class="caption">
-                    <!-- Navigation Link -->
+                    <!-- Navigation Link | Dynamic Routing -->
+                    <!-- TODO: Stopped until named routes -->
                      <router-link 
                         :to='"/products/" + product.id' 
                         tag="h4"
