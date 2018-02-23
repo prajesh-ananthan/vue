@@ -4,8 +4,13 @@
             <div class="thumbnail">
                 <img class="group list-group-image" src="http://placehold.it/400x250/000/fff">
                 <div class="caption">
-                    <!-- TODO: Insert router link -->
-                    <h4 class="group inner list-group-item-heading">{{ product.name }}</h4>
+                    <!-- Navigation Link -->
+                     <router-link 
+                        :to='"/products/" + product.id' 
+                        tag="h4"
+                        class="group inner list-group-item-heading">
+                          <a>{{ product.name }}</a>
+                    </router-link>
                     <p class="group inner list-group-item-text">{{ product.description }}</p>
                     <br>
 
@@ -28,29 +33,39 @@
 </template>
 
 <script>
-    import { products } from './data/products';
-    import { eventBus } from './main';
-    export default {
-        data() {
-            return {
-                products: products
-            };
-        },
-        methods: {
-            addProductToCart(product, quantity) {
-                eventBus.$emit('addItemToCart', {
-                    product: product,
-                    quantity: quantity
-                });
-            }
-        }
+import { products } from "./data/products";
+import { eventBus } from "./main";
+export default {
+  data() {
+    return {
+      products: products
+    };
+  },
+  methods: {
+    addProductToCart(product, quantity) {
+      eventBus.$emit("addItemToCart", {
+        product: product,
+        quantity: quantity
+      });
     }
+  }
+};
 </script>
 
 <style>
-    #products .item img { background-color: #000; }
-    #products .item p.lead { margin-bottom: 0; }
-    #products .item .number-in-stock { margin-right: 10px; }
-    #products .item .number-in-stock.few { color: #E0A14F; }
-    #products .item .number-in-stock.none { color: #C45E5E; }
+#products .item img {
+  background-color: #000;
+}
+#products .item p.lead {
+  margin-bottom: 0;
+}
+#products .item .number-in-stock {
+  margin-right: 10px;
+}
+#products .item .number-in-stock.few {
+  color: #e0a14f;
+}
+#products .item .number-in-stock.none {
+  color: #c45e5e;
+}
 </style>

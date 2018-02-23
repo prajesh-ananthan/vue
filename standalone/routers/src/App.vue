@@ -4,16 +4,22 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <!-- Router link to particular page -->
-                    <router-link to="/" class="navbar-brand">
+                    <router-link to="/" exact class="navbar-brand">
                         <strong>E-commerce Inc.</strong>
                     </router-link>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <!-- Router links -->
-                       <li><router-link to="/">Products</router-link></li>
-                       <li><router-link to="/cart">Cart</router-link></li>
+                        <!-- Router links | Navigation Links -->
+                       <!-- <li><router-link to="/" exact active-class="active">Products</router-link></li>
+                       <li><router-link to="/cart" active-class="active">Cart</router-link></li> -->
+                        <router-link to="/" tag="li" exact active-class="active">
+                          <a>Products</a>
+                        </router-link>
+                       <router-link to="/cart" tag="li" active-class="active">
+                        <a>Cart</a>
+                       </router-link>
                     </ul>
                     <div class="nav navbar-nav navbar-right">
                         <div class="stats">{{ cart.items.length }} 

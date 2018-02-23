@@ -50,6 +50,7 @@
                 </div>
             </div>
             <div v-else>
+                <!-- Start Cart Item page -->
                 <h1>Cart</h1>
 
                 <table v-if="cart.items.length > 0" class="table table-striped">
@@ -64,7 +65,10 @@
                         <tbody>
                             <tr v-for="item in cart.items">
                                 <td>{{ item.product.name }}</td>
-                                <td>{{ item.quantity }}</td>
+                                <td>{{ item.quantity }} &nbsp;
+                                    <button class="btn btn-success" @click="increaseQuantity(item)" :disabled="item.product.inStock == 0">+</button>
+                                    <button class="btn btn-danger" @click="decreaseQuantity(item)" :disabled="item.product.inStock == 0">-</button>
+                                </td>
                                 <td>{{ item.quantity * item.product.price | currency }}</td>
                             </tr>
     
@@ -78,10 +82,10 @@
     
                             <tr>
                                 <td class="text-right" colspan="2">
-                                    <strong>Taxes</strong>
+                                    <strong>GST (6%)</strong>
                                 </td>
     
-                                <td>{{ taxAmount | currency }}</td>
+                                <td>{{ gstAmount | currency }}</td>
                             </tr>
     
                             <tr>
@@ -89,18 +93,18 @@
                                     <strong>Grand total</strong>
                                 </td>
     
-                                <td>{{ cartTotal + taxAmount | currency }}</td>
+                                <td>{{ cartTotal + gstAmount | currency }}</td>
                             </tr>
     
                             <tr>
                                 <td colspan="2"></td>
-                                <td><button class="btn btn-success">Checkout</button></td>
+                                <td><button class="btn btn-success" @click="checkout">Checkout</button></td>
                             </tr>
                         </tbody>
                     </table>
 
                     <p v-else>Your cart is currently empty</p>
-
+                     <!-- End Cart Item page -->
             </div>
         </div>
     </div>
