@@ -25,6 +25,7 @@
 import { products } from "./data/products";
 
 export default {
+  // Using route props, Refer to routes.js with "props: true"
   props: {
     productId: {
       required: true
@@ -57,6 +58,7 @@ export default {
       return match;
     },
     goBack() {
+      // Navigates to the front page (ProductList.vue) according to routes.js
       this.$router.push('/');
     }
   },

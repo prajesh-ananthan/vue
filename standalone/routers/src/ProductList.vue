@@ -2,16 +2,26 @@
     <div id="products" class="row list-group">
         <div v-for="product in products" class="item col-xs-4">
             <div class="thumbnail">
-                <img class="group list-group-image" src="http://placehold.it/400x250/000/fff">
+              <!-- Navigating programatically -->
+                <img @click="clickedImage(product)" class="group list-group-image" src="http://placehold.it/400x250/000/fff">
                 <div class="caption">
+                    
                     <!-- Navigation Link | Dynamic Routing -->
-                    <!-- TODO: Stopped until named routes -->
-                     <router-link 
+                     <!-- <router-link 
                         :to='"/products/" + product.id' 
                         tag="h4"
                         class="group inner list-group-item-heading">
                           <a>{{ product.name }}</a>
+                    </router-link> -->
+
+                    <!-- Named routes  -->
+                     <router-link 
+                        :to="{ name: 'viewProduct', params:  { productId : product.id}}" 
+                        tag="h4"
+                        class="group inner list-group-item-heading">
+                          <a>{{ product.name }}</a>
                     </router-link>
+
                     <p class="group inner list-group-item-text">{{ product.description }}</p>
                     <br>
 
@@ -47,6 +57,14 @@ export default {
       eventBus.$emit("addItemToCart", {
         product: product,
         quantity: quantity
+      });
+    },
+    clickedImage(product) {
+      this.$router.push({
+        name: "viewProduct",
+        params: {
+          productId: product.id
+        }
       });
     }
   }
