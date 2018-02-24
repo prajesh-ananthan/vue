@@ -1,11 +1,42 @@
 <template>
     <div v-if="product">
-       
-        <p><strong>ID:</strong> {{ product.id }}</p>
-        <p><strong>Price:</strong> {{ product.price | currency }}</p>
-        <p><strong>In stock:</strong> {{ product.inStock }}</p>
-        <p>{{ product.description }}</p>
 
+      <button class="btn btn-primary" @click="goBack">&laquo; Back</button>
+        <h1>{{ product.name }}</h1>
+
+        <ul class="nav nav-pills">
+            <router-link
+                class="presentation"
+                :to="{ name: 'viewProduct' , params: { productId : product.id }}"
+                tag="li"
+                active-class="active">
+             <a>Details</a>
+            </router-link>
+
+             <router-link
+                class="presentation"
+                :to="{ name: 'productReviews' , params: { productId : product.id }}"
+                tag="li"
+                active-class="active">
+             <a>Reviews</a>
+            </router-link>
+            
+        </ul>
+
+        <br>
+
+        <router-view></router-view>
+        
+        <div v-if="relatedProducts != null">
+            <h2>Related Products</h2>
+            <ul>
+                <li v-for="related in relatedProducts">
+                    <router-link :to="{ name: 'viewProduct', params: { productId: related.id } }">
+                        {{ related.name }}
+                    </router-link>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -45,10 +76,9 @@ export default {
 
       return match;
     },
-    goBack() {
-      // Navigates to the front page (ProductList.vue) according to routes.js
+      goBack() {
       this.$router.push('/');
-    }
+    }   
   },
   computed: {
     relatedProducts() {
